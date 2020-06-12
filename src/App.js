@@ -1,4 +1,6 @@
-import React from 'react';
+
+import React from 'react'; 
+import { Component } from 'react';
 import './App.css';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
@@ -8,7 +10,7 @@ img10, img11, img12, img13, img14, img15, img16 } from './img/index';
 
 const tracks = [
   {
-    track: "http://m4f.e7a.fun/track1.mp3",
+    url: "http://m4f.e7a.fun/track1.mp3",
     title: "Reckoner",
     artist: "radiohead",
     lyric: '"dedicated to all human beings..."',
@@ -16,7 +18,7 @@ const tracks = [
     alt: "In Rainbows"
   },
   {
-    track: "http://m4f.e7a.fun/track2.mp3",
+    url: "http://m4f.e7a.fun/track2.mp3",
     title: "The Good, The Bad, The Ugly",
     artist: "consequence",
     lyric: '"and this is for the hoods, the crabs, the junkies..."',
@@ -24,7 +26,7 @@ const tracks = [
     alt: "Don't Quit Your Job"
   },
   {
-    track: 3,
+    url: 3,
     title: "Dull Life",
     artist: "yeahyeahyeahs",
     lyric: "we've seen the nightmare of your lies...",
@@ -32,7 +34,7 @@ const tracks = [
     alt: "It's Blitz"
   },
   {
-    track: 4,
+    url: 4,
     title: "Synthesizer",
     artist: "outkast",
     lyric: "all's well. nothing's well...",
@@ -40,7 +42,7 @@ const tracks = [
     alt: "Aquemini"
   },
   {
-    track: 5,
+    url: 5,
     title: "Strength Beyond Strength",
     artist: "pantera",
     lyric: "you're working for perfect bodies, perfect minds, perfect neighbors, i'm helping to legalize dope on your pristine streets, i'm making a fortune...",
@@ -48,7 +50,7 @@ const tracks = [
     alt: "Far Beyond Driven"
   },
   {
-    track: 6,
+    url: 6,
     title: "Blues Dance Raid",
     artist: "steelpulse",
     lyric: "...pigs come to destroy, rasta cry blood, dreadlocks cry blood",
@@ -56,7 +58,7 @@ const tracks = [
     alt: "True Democracy"
   },
   {
-    track: 7,
+    url: 7,
     title: "Black Ice",
     artist: "goodiemob",
     lyric: "...yellows and greens and blues and browns and greys and hues that ooze beneath dilapidated wood",
@@ -64,7 +66,7 @@ const tracks = [
     alt: "Still Standing"
   },
   {
-    track: 8,
+    url: 8,
     title: "Brother's Keeper",
     artist: "andersonpaak",
     lyric: "shit, i'm grown, but still a baby...",
@@ -72,7 +74,7 @@ const tracks = [
     alt: "Oxnard"
   },
   {
-    track: 9,
+    url: 9,
     title: "Science",
     artist: "systemofadown",
     lyric: "spirit moves through all things...",
@@ -80,7 +82,7 @@ const tracks = [
     alt: "Toxicity"
   },
   {
-    track: 10,
+    url: 10,
     title: "Tripping Billies",
     artist: "davematthewsband",
     lyric: "...you and me and all our friends",
@@ -88,7 +90,7 @@ const tracks = [
     alt: "Crash"
   },
   {
-    track: 11,
+    url: 11,
     title: "Been Use Ta",
     artist: "djshadow",
     lyric: "when you turn your idols into rivals...",
@@ -96,7 +98,7 @@ const tracks = [
     alt: "Our Pathetic Age"
   },
   {
-    track: 12,
+    url: 12,
     title: "Inertia Creeps",
     artist: "massiveattack",
     lyric: "i bounce off walls, lose my footing, and fall...",
@@ -104,7 +106,7 @@ const tracks = [
     alt: "Mezzanine"
   },
   {
-    track: 13,
+    url: 13,
     title: "This Secret Ninja",
     artist: "afi",
     lyric: "give me a fuckin' break...",
@@ -112,7 +114,7 @@ const tracks = [
     alt: "Very Proud Of Ya"
   },
   {
-    track: 14,
+    url: 14,
     title: "It's Not Up To You",
     artist: "bjork",
     lyric:"i can decide what i give, but it's not up to me what i get given...",
@@ -120,7 +122,7 @@ const tracks = [
     alt: "Vespertine"
   },
   {
-    track: 15,
+    url: "http://m4fv5.e7a.fun/track1.mp3",
     title: "Moon Palace",
     artist: "luna",
     lyric: "well, we're travelin' light, gonna speed through the night...",
@@ -128,7 +130,7 @@ const tracks = [
     alt: "Penthouse"
   },
   {
-    track: 16,
+    url: "http://m4fv5.e7a.fun/track1.mp3",
     title: "Back To The Old House",
     artist: "thesmiths",
     lyric: "are you still there?",
@@ -137,38 +139,52 @@ const tracks = [
   },
 ];
 
-const Tracks = (props) => {
+const Track = (props) => {
   return (
-    <div className="Tracks">
-      {
-        tracks.map((track, index) => {
-          return (
-            <div className="container" key={index}>
-              <img src={ tracks[index].cover } alt={ tracks[index].alt } />
-              <div className={ tracks[index].artist }>
-                <p>{ tracks[index].lyric }</p>
-              </div>
-            </div> 
-          );
-        })
-      }
+    <div className="container">
+      <img src={props.trackDetails.cover} alt={props.trackDetails.alt} />
+      <div className={props.trackDetails.artist}>
+        <p>{props.trackDetails.lyric}</p>
+      </div>
     </div>
   );
 }
 
+class AudioPlayerContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {currentTrack: 0};
+  }
+  render() {
+    function next(e) {
+      this.setState({currentTrack: 1});
+      console.log(track);
+
+      this.setState(function(state) {
+        return {
+          currentTrack: state.current + 1
+        };
+      });
+    }
+    return (
+      <AudioPlayer src={tracks[`${this.state.currentTrack}`].url} showSkipControls={true} id="test" onClickNext={next} onPlay={e => console.log("onPlay")} />
+    )
+  }
+}
 
 function App() {
-  
-  let number = 0;
-  const test = (e) => {
-    number+=1;
-    console.log(number)
-    return number;
-  }
+  let key = 0;
   return (
-    <div>
-      <Tracks />
-      <AudioPlayer id="test" src={tracks[`${number}`].track} showSkipControls={true} onPlay={e => console.log("onPlay")} onClickNext={test} />
+    <div className="App">
+      <div className="Tracks">
+        {
+          tracks.map((track, index) => {
+            return <Track trackDetails={tracks[index]} key={key += 1} />
+          })
+        }
+      </div>
+      <AudioPlayerContainer currentTrack={tracks[0].url} />
+      {/* <AudioPlayer src={tracks[`${track}`].url} showSkipControls={true} id="test" onClickNext={next} onPlay={e => console.log("onPlay")} /> */}
     </div>
   );
 }
