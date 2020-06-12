@@ -1,1 +1,132 @@
+.Tracks {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.container {
+  width: 25%;
+  position: relative;
+}
+
+.container div {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
+.container p {
+  font-family: 'Courier New', Courier, monospace;
+  max-width: 75%;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+@media (max-width:1200px) {
+  .container {
+    width: 50%;
+  }
+}
+@media (max-width:767px) {
+  .container {
+    width: 100%;
+  }
+}
+
+.container img {
+  width: 100%;
+  height: 100%;
+}
+
+.radiohead {
+  background: #00b933;
+  opacity: .994;
+}
+
+.consequence {
+  background: #321715;
+  opacity: .994;
+}
+
+.yeahyeahyeahs {
+ background: #F2B243;
+ opacity: .983;
+}
+.outkast {
+  background: #856390;
+  opacity: .989;
+}
+.pantera {
+  background: #307395;
+  opacity: .989;
+}
+.goodiemob {
+  background: #B4ABAF;
+  opacity: .986;
+}
+.steelpulse {
+  background: #906B3F;
+  opacity: .989;
+}
+.andersonpaak {
+  background: #768C93;
+  opacity: .994;
+}
+.systemofadown {
+  background: #DD3738;
+  opacity: .989;
+}
+.davematthewsband {
+  background: #2E1B5B;
+  opacity: .989;
+}
+.djshadow {
+  background: #F8D749;
+  opacity: 989;
+}
+.massiveattack {
+  background: #151417;
+  opacity: .989;
+}
+.afi {
+  background: #6B7636;
+  opacity: .994;
+}
+.bjork {
+  background: #616161;
+  opacity: .987;
+}
+.luna {
+  background: #4E4446;
+  opacity: .996;
+}
+.thesmiths {
+  background: #EAEAEA;
+  opacity: .985;
+}
+
+.radiohead,
+.consequence,
+.outkast,
+.pantera, 
+.steelpulse,
+.goodiemob,
+.andersonpaak,
+.massiveattack, 
+.afi,
+.bjork,
+.systemofadown,
+.davematthewsband,
+.luna {
+  color: #fff;
+}
+.yeahyeahyeahs,
+.goodiemob
+.thesmiths {
+  color: #000;
+}

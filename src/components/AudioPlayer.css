@@ -1,0 +1,8 @@
+.rhap_container {
+  position: fixed;
+  bottom: 0;
+}
+
+.rhap_main-controls-button {
+  outline: 0;
+}
