@@ -10,6 +10,7 @@ img10, img11, img12, img13, img14, img15, img16 } from './img/index';
 
 const tracks = [
   {
+    id: 1,
     url: "http://m4f.e7a.fun/track1.mp3",
     title: "Reckoner",
     artist: "radiohead",
@@ -18,6 +19,7 @@ const tracks = [
     alt: "In Rainbows"
   },
   {
+    id: 2,
     url: "http://m4f.e7a.fun/track2.mp3",
     title: "The Good, The Bad, The Ugly",
     artist: "consequence",
@@ -26,7 +28,8 @@ const tracks = [
     alt: "Don't Quit Your Job"
   },
   {
-    url: 3,
+    id: 3,
+    url: "http://m4f.e7a.fun/track3.mp3",
     title: "Dull Life",
     artist: "yeahyeahyeahs",
     lyric: "we've seen the nightmare of your lies...",
@@ -34,7 +37,8 @@ const tracks = [
     alt: "It's Blitz"
   },
   {
-    url: 4,
+    id: 4,
+    url: "http://m4f.e7a.fun/track4.mp3",
     title: "Synthesizer",
     artist: "outkast",
     lyric: "all's well. nothing's well...",
@@ -42,7 +46,8 @@ const tracks = [
     alt: "Aquemini"
   },
   {
-    url: 5,
+    id: 5,
+    url: "http://m4f.e7a.fun/track5.mp3",
     title: "Strength Beyond Strength",
     artist: "pantera",
     lyric: "you're working for perfect bodies, perfect minds, perfect neighbors, i'm helping to legalize dope on your pristine streets, i'm making a fortune...",
@@ -50,7 +55,8 @@ const tracks = [
     alt: "Far Beyond Driven"
   },
   {
-    url: 6,
+    id: 6,
+    url: "http://m4f.e7a.fun/track6.mp3",
     title: "Blues Dance Raid",
     artist: "steelpulse",
     lyric: "...pigs come to destroy, rasta cry blood, dreadlocks cry blood",
@@ -58,7 +64,8 @@ const tracks = [
     alt: "True Democracy"
   },
   {
-    url: 7,
+    id: 7,
+    url: "http://m4f.e7a.fun/track7.mp3",
     title: "Black Ice",
     artist: "goodiemob",
     lyric: "...yellows and greens and blues and browns and greys and hues that ooze beneath dilapidated wood",
@@ -66,7 +73,8 @@ const tracks = [
     alt: "Still Standing"
   },
   {
-    url: 8,
+    id: 8,
+    url: "http://m4f.e7a.fun/track8.mp3",
     title: "Brother's Keeper",
     artist: "andersonpaak",
     lyric: "shit, i'm grown, but still a baby...",
@@ -74,7 +82,8 @@ const tracks = [
     alt: "Oxnard"
   },
   {
-    url: 9,
+    id: 9,
+    url: "http://m4f.e7a.fun/track9.mp3",
     title: "Science",
     artist: "systemofadown",
     lyric: "spirit moves through all things...",
@@ -82,7 +91,8 @@ const tracks = [
     alt: "Toxicity"
   },
   {
-    url: 10,
+    id: 10,
+    url: "http://m4f.e7a.fun/track10.mp3",
     title: "Tripping Billies",
     artist: "davematthewsband",
     lyric: "...you and me and all our friends",
@@ -90,7 +100,8 @@ const tracks = [
     alt: "Crash"
   },
   {
-    url: 11,
+    id: 11,
+    url: "http://m4f.e7a.fun/track11.mp3",
     title: "Been Use Ta",
     artist: "djshadow",
     lyric: "when you turn your idols into rivals...",
@@ -98,7 +109,8 @@ const tracks = [
     alt: "Our Pathetic Age"
   },
   {
-    url: 12,
+    id: 12,
+    url: "http://m4f.e7a.fun/track12.mp3",
     title: "Inertia Creeps",
     artist: "massiveattack",
     lyric: "i bounce off walls, lose my footing, and fall...",
@@ -106,7 +118,8 @@ const tracks = [
     alt: "Mezzanine"
   },
   {
-    url: 13,
+    id: 13,
+    url: "http://m4f.e7a.fun/track13.mp3",
     title: "This Secret Ninja",
     artist: "afi",
     lyric: "give me a fuckin' break...",
@@ -114,7 +127,8 @@ const tracks = [
     alt: "Very Proud Of Ya"
   },
   {
-    url: 14,
+    id: 14,
+    url: "http://m4f.e7a.fun/track14.mp3",
     title: "It's Not Up To You",
     artist: "bjork",
     lyric:"i can decide what i give, but it's not up to me what i get given...",
@@ -122,7 +136,8 @@ const tracks = [
     alt: "Vespertine"
   },
   {
-    url: "http://m4fv5.e7a.fun/track1.mp3",
+    id: 15,
+    url: "http://m4f.e7a.fun/track15.mp3",
     title: "Moon Palace",
     artist: "luna",
     lyric: "well, we're travelin' light, gonna speed through the night...",
@@ -130,7 +145,8 @@ const tracks = [
     alt: "Penthouse"
   },
   {
-    url: "http://m4fv5.e7a.fun/track1.mp3",
+    id: 16,
+    url: "http://m4fv5.e7a.fun/track16.mp3",
     title: "Back To The Old House",
     artist: "thesmiths",
     lyric: "are you still there?",
@@ -152,39 +168,34 @@ const Track = (props) => {
 
 class AudioPlayerContainer extends Component {
   constructor(props) {
-    super(props);
-    this.state = {currentTrack: 0};
+    super();
+    this.state = {
+      currentTrack: 0,
+    } 
+  }
+  onNextTrack() {
+    this.setState({
+      currentTrack: this.state.currentTrack + 1,
+    });
   }
   render() {
-    function next(e) {
-      this.setState({currentTrack: 1});
-      console.log(track);
-
-      this.setState(function(state) {
-        return {
-          currentTrack: state.current + 1
-        };
-      });
-    }
     return (
-      <AudioPlayer src={tracks[`${this.state.currentTrack}`].url} showSkipControls={true} id="test" onClickNext={next} onPlay={e => console.log("onPlay")} />
-    )
+      <AudioPlayer src={tracks[`${this.state.currentTrack}`].url} showSkipControls={true} showJumpControls={false} onClickNext={this.onNextTrack.bind(this)} />
+    );
   }
 }
 
 function App() {
-  let key = 0;
   return (
     <div className="App">
       <div className="Tracks">
         {
           tracks.map((track, index) => {
-            return <Track trackDetails={tracks[index]} key={key += 1} />
+            return <Track trackDetails={tracks[index]} key={tracks[index].id} />
           })
         }
       </div>
-      <AudioPlayerContainer currentTrack={tracks[0].url} />
-      {/* <AudioPlayer src={tracks[`${track}`].url} showSkipControls={true} id="test" onClickNext={next} onPlay={e => console.log("onPlay")} /> */}
+      <AudioPlayerContainer  />
     </div>
   );
 }
