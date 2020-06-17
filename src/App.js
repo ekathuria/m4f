@@ -183,9 +183,14 @@ class AudioPlayerContainer extends Component {
       currentTrack: this.state.currentTrack - 1,
     })
   }
+  trackEnd() {
+    this.setState({
+      currentTrack: this.state.currentTrack + 1,
+    })
+  }
   render() {
     return (
-      <AudioPlayer src={tracks[`${this.state.currentTrack}`].url} showSkipControls={true} showJumpControls={false} onClickNext={this.onNextTrack.bind(this)} onClickPrevious={this.onPreviousTrack.bind(this)} />
+      <AudioPlayer src={tracks[`${this.state.currentTrack}`].url} showSkipControls={true} showJumpControls={false} onClickNext={this.onNextTrack.bind(this)} onClickPrevious={this.onPreviousTrack.bind(this)} onEnded={this.trackEnd.bind(this)} />
     );
   }
 }
