@@ -7,6 +7,7 @@ import 'react-h5-audio-player/lib/styles.css';
 import './components/AudioPlayer.css';
 import { img01, img02, img03, img04, img05, img07, img06, img08, img09,
 img10, img11, img12, img13, img14, img15, img16 } from './img/index';
+import Scramble from 'react-scramble'
 
 const tracks = [
   {
@@ -160,7 +161,22 @@ const Track = (props) => {
     <div className="container">
       <img src={props.trackDetails.cover} alt={props.trackDetails.alt} />
       <div className={props.trackDetails.artist}>
-        <p>{props.trackDetails.lyric}</p>
+        <p><Scramble autoStart noBreakSpace speed="slow" text="Lorem ipsum dolor"
+              steps={[
+                {
+                  roll: 10,
+                  action: '+',
+                  type: 'all',
+                },
+                {
+                  roll: 10,
+                  action: '+',
+                  type: 'forward',
+                  // text: `{props.trackDetails.artist}`
+                },
+              ]}
+            />
+        </p>
       </div>
     </div>
   );
@@ -188,9 +204,12 @@ class AudioPlayerContainer extends Component {
       currentTrack: this.state.currentTrack + 1,
     })
   }
+  onListen() {
+    console.log('listened');
+  }
   render() {
     return (
-      <AudioPlayer src={tracks[`${this.state.currentTrack}`].url} showSkipControls={true} showJumpControls={false} onClickNext={this.onNextTrack.bind(this)} onClickPrevious={this.onPreviousTrack.bind(this)} onEnded={this.trackEnd.bind(this)} />
+      <AudioPlayer src={tracks[`${this.state.currentTrack}`].url} showSkipControls={true} showJumpControls={false} onClickNext={this.onNextTrack.bind(this)} onClickPrevious={this.onPreviousTrack.bind(this)} onEnded={this.trackEnd.bind(this)} listenInterval="10000" onListen={this.onListen.bind(this)} />
     );
   }
 }
